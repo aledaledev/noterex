@@ -1,0 +1,11 @@
+.custom-toast{
+    transition: opacity .5s;
+}
+
+.visible{
+    opacity: 1;
+}
+
+.hidden{
+    opacity: 0;
+}

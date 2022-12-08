@@ -13,9 +13,11 @@
     <form id="task-form" class="d-flex flex-column align-items-center form-group gap-4">
       <div class="col-10">
       <input name="title" value="" class="form-control" type="text" placeholder="title">
+      <div class="invalid-feedback">No empty fields</div>
       </div>
       <div class="col-10">
         <textarea class="form-control" value="" style="resize: none; height: 10rem;" name="description" placeholder="description"></textarea>
+        <div class="invalid-feedback">No empty fields</div>
       </div>
       <link rel="stylesheet" href="./src/styles/bootstrap.min.css">
       <button type="submit" class="btn btn-outline-primary align-self-center">Save</button>
@@ -50,7 +52,8 @@
       </div>-->
 
     </div>
-    
+
     <script type="module" src="/src/main.ts"></script>
+    <script src="./src/services/bootstrap.bundle.min.js"></script>
   </body>
 </html>
