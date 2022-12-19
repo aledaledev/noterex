@@ -1,4 +1,4 @@
-import { Toast } from "../main"
+import { Toast } from "../types"
 
 export const customToast:Toast[] = [
     {
@@ -22,7 +22,7 @@ export function createToast({bgColor,content}:Toast){
     const buttonClose = document.createElement('button')
 
     buttonClose.classList.add('btn-close','btn-close-white','me-2','m-auto')
-    buttonClose.addEventListener('click', (e) => {
+    buttonClose.addEventListener('click', () => {
         toast.classList.replace('visible','hidden')
         setTimeout(() => {
             document.body.removeChild(toast)

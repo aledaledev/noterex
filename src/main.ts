@@ -1,33 +1,13 @@
-import './styles/style.css'
-import {v4 as uuid} from 'uuid'
+import './assets/styles/style.css'
 import renderTasksList from './ts/renderTasksList'
 import saveTask from './ts/saveTask'
+import { Task } from './types'
+import dafaultTasks from './data/defaultTasks.json'
 
-export type Task = {
-    id: string;
-    title: string;
-    description: string;
-    //date: Date
-}
+localStorage.setItem('tasks',JSON.stringify(dafaultTasks))
+export const store = JSON.parse(localStorage.getItem('tasks') as string)
 
-export type Toast = {
-    bgColor: 'info' | 'success' | 'danger',
-    content: 'created' | 'edited' | 'deleted'
-}
-
-export let tasks:Task[] = [
-    {
-        id: uuid(),
-        title: 'Go to Murray show',
-        description: 'This night will be the best one ever, hahahha'
-    },
-    {
-        id: uuid(),
-        title: 'Make tea for Nina',
-        description: 'Nina likes tea but she dont know make him self, so I am going to help to him :3'
-    }
-]
-
+export let tasks:Task[] = store
 export let editId:string = '';
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 
@@ -42,6 +22,7 @@ renderTasksList()
 //errores x
 //modular x
 //styles (responsive)
+//tipado
 //localstorage 
 //mini modal x
 

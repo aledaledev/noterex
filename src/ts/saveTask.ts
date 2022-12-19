@@ -1,7 +1,8 @@
-import {taskForm, editId, tasks, Task, setEditId, setTasks} from '../main'
+import {taskForm, editId, tasks, setEditId, setTasks} from '../main'
 import renderTasksList from './renderTasksList'
 import {v4 as uuid} from 'uuid'
 import createToast, { customToast } from './createToast'
+import { Task } from '../types'
 
 const handleError = (title : HTMLInputElement,description:HTMLTextAreaElement) => {
     title.classList.remove('is-invalid')

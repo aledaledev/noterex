@@ -1,5 +1,6 @@
 import renderTasksList from './renderTasksList'
-import {taskForm, editId, tasks, setEditId, Task} from '../main'
+import {taskForm, editId, tasks, setEditId} from '../main'
+import { Task } from '../types'
 
 const editTask = (id:string) => {
     const titleForm = taskForm['title'] as unknown as HTMLInputElement
