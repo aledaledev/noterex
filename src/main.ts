@@ -4,26 +4,24 @@ import saveTask from './ts/saveTask'
 import { Task } from './types'
 import dafaultTasks from './data/defaultTasks.json'
 
-localStorage.setItem('tasks',JSON.stringify(dafaultTasks))
-export const store = JSON.parse(localStorage.getItem('tasks') as string)
+const store = JSON.parse(localStorage.getItem('tasks') as string) || dafaultTasks
 
 export let tasks:Task[] = store
 export let editId:string = '';
-export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 
+export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 const title = taskForm['title'] as unknown as HTMLInputElement
 const description = taskForm["description"] as HTMLTextAreaElement
 
 taskForm.addEventListener('submit', saveTask)
-
 taskForm.reset()
 renderTasksList()
 
 //errores x
 //modular x
 //styles (responsive)
-//tipado
-//localstorage 
+//tipado x 
+//localstorage x
 //mini modal x
 
 export function setEditId(x:string):void{

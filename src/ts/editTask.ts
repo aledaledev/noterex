@@ -8,7 +8,7 @@ const editTask = (id:string) => {
     const buttonSave = taskForm[2] as HTMLButtonElement
 
     if(editId === '' || editId !== id){
-        const {title, description} = tasks.find((task:Task) => task.id === id)
+        const {title, description} = tasks.find((task:Task) => task.id === id) as {title:string,description:string}
     
         titleForm.focus()
 

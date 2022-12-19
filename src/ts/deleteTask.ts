@@ -1,10 +1,11 @@
 import renderTasksList from './renderTasksList'
-import {setTasks,tasks} from '../main'
+import {tasks} from '../main'
 import {createToast, customToast} from './createToast'
+import localStorage from '../utils/localStorage'
 
 const deleteTask = (id:string) => {
     const result = tasks.filter(task => task.id !== id)
-    setTasks(result)
+    localStorage('tasks',result)
     renderTasksList()
     createToast(customToast[2])
 }

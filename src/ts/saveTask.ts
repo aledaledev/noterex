@@ -1,8 +1,9 @@
-import {taskForm, editId, tasks, setEditId, setTasks} from '../main'
+import {taskForm, editId, tasks, setEditId} from '../main'
 import renderTasksList from './renderTasksList'
 import {v4 as uuid} from 'uuid'
 import createToast, { customToast } from './createToast'
 import { Task } from '../types'
+import localStorage from '../utils/localStorage'
 
 const handleError = (title : HTMLInputElement,description:HTMLTextAreaElement) => {
     title.classList.remove('is-invalid')
@@ -15,7 +16,7 @@ const handleError = (title : HTMLInputElement,description:HTMLTextAreaElement) =
     }
 }
 
-const saveTask = (e:HTMLFormElement) => {
+const saveTask = (e:SubmitEvent) => {
     e.preventDefault()
     const title = taskForm['title'] as unknown as HTMLInputElement
     const description = taskForm["description"] as HTMLTextAreaElement
@@ -32,12 +33,13 @@ const saveTask = (e:HTMLFormElement) => {
             //date: new Date()
         }
         const resultTasks = [...tasks, task]
-        setTasks(resultTasks)
+        localStorage('tasks',resultTasks)
         createToast(customToast[0])
     } else {
         const taskIndex = tasks.findIndex(task => task.id === editId)
         tasks[taskIndex].description = description.value,
         tasks[taskIndex].title = title.value
+        localStorage('tasks',tasks)
         setEditId('')
         buttonSave.classList.replace('btn-outline-success','btn-outline-primary')
         createToast(customToast[1])
