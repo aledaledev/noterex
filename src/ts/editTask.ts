@@ -8,12 +8,18 @@ const editTask = (id:string) => {
     const buttonSave = taskForm[2] as HTMLButtonElement
 
     if(editId === '' || editId !== id){
-        const {title, description} = tasks.find((task:Task) => task.id === id) as {title:string,description:string}
-    
         titleForm.focus()
+        const {title, description} = tasks.find((task:Task) => task.id === id) as {title:string,description:string}
 
         buttonSave.classList.replace('btn-outline-primary','btn-outline-success')
         setEditId(id)
+
+        if(titleForm.classList.contains('is-invalid')){
+            titleForm.classList.remove('is-invalid')
+        }
+        if(descriptionForm.classList.contains('is-invalid')){
+            descriptionForm.classList.remove('is-invalid')
+        }
     
         titleForm.value= title
         descriptionForm.value=description

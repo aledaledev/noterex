@@ -19,10 +19,11 @@ renderTasksList()
 
 //errores x
 //modular x
-//styles (responsive)
+//styles (responsive) x
 //tipado x 
 //localstorage x
 //mini modal x
+//hacer algo con date()
 
 export function setEditId(x:string):void{
     editId=x
