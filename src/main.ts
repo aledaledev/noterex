@@ -8,12 +8,35 @@ const store = JSON.parse(localStorage.getItem('tasks') as string) || dafaultTask
 
 export let tasks:Task[] = store
 export let editId:string = '';
+let dates:string[] = []
 
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 const title = taskForm['title'] as unknown as HTMLInputElement
 const description = taskForm["description"] as HTMLTextAreaElement
+const dateTime = taskForm['datetime']
 
-taskForm.addEventListener('submit', saveTask)
+taskForm.addEventListener('submit', (e)=> {
+    e.preventDefault()
+    saveTask
+    
+    const taskDate = new Date(dateTime.value);
+    
+    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+
+    const month = monthNames[taskDate.getUTCMonth()];
+    const day = taskDate.getUTCDate();
+    const year = taskDate.getUTCFullYear();
+    
+    const date = `${day} ${month} ${year}`;
+
+    if(!dates.includes(date)){
+        dates = [...dates, date]
+    }
+
+    console.log(dates);
+    
+    
+})
 taskForm.reset()
 renderTasksList()
 
@@ -48,3 +71,4 @@ description.addEventListener('input', () => {
         description.classList.remove('is-invalid')
     }
 })
+
