@@ -6,7 +6,7 @@ function renderTasksList() {
     const tasksList = <HTMLDivElement>document.getElementById('tasks-list')
     tasksList.innerHTML=''
 
-    tasks.map(({id,description,title}) => {
+    tasks.map(({id,description,title,time,dayMonthYear}) => {
         const cardContainer = document.createElement('div') 
         const card = document.createElement('div')
         const cardBody = document.createElement('div')
@@ -26,7 +26,7 @@ function renderTasksList() {
         buttonEdit.addEventListener('click', () => editTask(id))
         
         span.classList.add('badge','bg-light','ms-auto','ms-sm-0','ms-md-auto','ms-lg-0','ms-xl-auto')
-        span.textContent='2 days ago'
+        span.textContent=(+time.split(':')[0])>11?time+' PM':time+' AM'
 
         buttonContainer.classList.add('d-flex','align-items-center','gap-2','mt-auto','flex-wrap')
         buttonContainer.appendChild(buttonDelete)

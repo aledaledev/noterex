@@ -1,9 +1,11 @@
-import {taskForm, editId, tasks, setEditId} from '../main'
+import {taskForm, editId, tasks, setEditId, dates, setDates} from '../main'
 import renderTasksList from './renderTasksList'
 import {v4 as uuid} from 'uuid'
 import createToast, { customToast } from './createToast'
 import { Task } from '../types'
 import localStorage from '../utils/localStorage'
+import { getDayMonthYear } from '../utils/getDayMonthYear'
+import { getTime } from '../utils/getTime'
 
 const handleError = (title : HTMLInputElement,description:HTMLTextAreaElement) => {
     title.classList.remove('is-invalid')
@@ -20,18 +22,25 @@ const saveTask = (e:SubmitEvent) => {
     e.preventDefault()
     const title = taskForm['title'] as unknown as HTMLInputElement
     const description = taskForm["description"] as HTMLTextAreaElement
-    const buttonSave = taskForm[2]
+    const dateTime = taskForm['datetime']
+    const buttonSave = taskForm[3]
 
     handleError(title,description)
     if(title.value === '' || description.value === '') return
     
     if(editId === ''){
+        const taskDate = new Date(dateTime.value);
         const task:Task = {
             id: uuid(),
             title: title.value,
             description: description.value,
-            //date: new Date()
+            time:getTime(taskDate),
+            dayMonthYear:getDayMonthYear(taskDate)
         }
+        if(!dates.includes(getDayMonthYear(taskDate))){
+            setDates([...dates, getDayMonthYear(taskDate)])
+        }
+        
         const resultTasks = [...tasks, task]
         localStorage('tasks',resultTasks)
         createToast(customToast[0])

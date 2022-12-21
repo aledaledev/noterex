@@ -2,7 +2,8 @@ export type Task = {
     id: string;
     title: string;
     description: string;
-    //date: Date
+    time:string;
+    dayMonthYear:string;
 }
 
 export type Toast = {

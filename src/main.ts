@@ -8,35 +8,33 @@ const store = JSON.parse(localStorage.getItem('tasks') as string) || dafaultTask
 
 export let tasks:Task[] = store
 export let editId:string = '';
-let dates:string[] = []
+export let dates:string[] = []
+console.log(dates);
 
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 const title = taskForm['title'] as unknown as HTMLInputElement
 const description = taskForm["description"] as HTMLTextAreaElement
-const dateTime = taskForm['datetime']
+//const dateTime = taskForm['datetime']
 
-taskForm.addEventListener('submit', (e)=> {
-    e.preventDefault()
-    saveTask
-    
-    const taskDate = new Date(dateTime.value);
-    
-    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+taskForm.addEventListener('submit',saveTask)
 
-    const month = monthNames[taskDate.getUTCMonth()];
-    const day = taskDate.getUTCDate();
-    const year = taskDate.getUTCFullYear();
-    
-    const date = `${day} ${month} ${year}`;
+    /*const taskDate = new Date(dateTime.value);
+    const dayMothYear = getDayMonthYear(taskDate)
+    const time = getTime(taskDate)
 
-    if(!dates.includes(date)){
-        dates = [...dates, date]
+    if(!dates.includes(dayMothYear)){
+        dates = [...dates, dayMothYear]
     }
 
     console.log(dates);
     
+    console.log(time);  //only hh:mm*/
+
+    //console.log((+time.split(':')[0])>11?time+' PM':time+' AM');    //AM or PM
     
-})
+    //console.log(time>"20:15");  //sort
+
+
 taskForm.reset()
 renderTasksList()
 
@@ -47,13 +45,20 @@ renderTasksList()
 //localstorage x
 //mini modal x
 //hacer algo con date()
+//ahora se vera implicado el localstorage porque debemos guardar los dates y los task
+//se deben ordenar por date y dentro por hora: de menor a mayor
+//generar distintos wrappers segun dates en el array
 
-export function setEditId(x:string):void{
-    editId=x
+export function setEditId(id:string):void{
+    editId=id
 }
 
-export function setTasks(x:Task[]):void{
-    tasks=x
+export function setTasks(updateTasks:Task[]):void{
+    tasks=updateTasks
+}
+
+export function setDates(updateDates:string[]):void{
+    dates=updateDates
 }
 
 title.addEventListener('input', () => {
