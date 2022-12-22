@@ -42,13 +42,13 @@ const saveTask = (e:SubmitEvent) => {
         }
         
         const resultTasks = [...tasks, task]
-        localStorage('tasks',resultTasks)
+        localStorage('tasksStorage',resultTasks)
         createToast(customToast[0])
     } else {
         const taskIndex = tasks.findIndex(task => task.id === editId)
         tasks[taskIndex].description = description.value,
         tasks[taskIndex].title = title.value
-        localStorage('tasks',tasks)
+        localStorage('tasksStorage',tasks)
         setEditId('')
         buttonSave.classList.replace('btn-outline-success','btn-outline-primary')
         createToast(customToast[1])

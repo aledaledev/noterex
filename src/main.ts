@@ -1,14 +1,14 @@
 import './assets/styles/style.css'
 import renderTasksList from './ts/renderTasksList'
 import saveTask from './ts/saveTask'
-import { Task } from './types'
-import dafaultTasks from './data/defaultTasks.json'
+import { StorageProps, Task } from './types'
+import defaultStorage from './data/defaultStorage.json'
 
-const store = JSON.parse(localStorage.getItem('tasks') as string) || dafaultTasks
+const {tasks:tasksStore, dates:datesStore}:StorageProps = JSON.parse(localStorage.getItem('tasksStorage') as string) || defaultStorage 
 
-export let tasks:Task[] = store
+export let tasks:Task[] = tasksStore 
 export let editId:string = '';
-export let dates:string[] = []
+export let dates:string[] = datesStore
 console.log(dates);
 
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
@@ -34,6 +34,10 @@ taskForm.addEventListener('submit',saveTask)
     
     //console.log(time>"20:15");  //sort
 
+    {
+        tasks:[{1:1},{1:1},{1:2},{1:2},{1:3}];
+        dates:['1','2','3'];
+    }
 
 taskForm.reset()
 renderTasksList()
