@@ -13,5 +13,5 @@ export type Toast = {
 
 export interface StorageProps {
     tasks:Task[],
-    dates:string[]
+    dates: string[] 
 }

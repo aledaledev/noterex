@@ -1,15 +1,14 @@
 import './assets/styles/style.css'
 import renderTasksList from './ts/renderTasksList'
 import saveTask from './ts/saveTask'
-import { StorageProps, Task } from './types'
+import { StorageProps } from './types'
 import defaultStorage from './data/defaultStorage.json'
 
-const {tasks:tasksStore, dates:datesStore}:StorageProps = JSON.parse(localStorage.getItem('tasksStorage') as string) || defaultStorage 
+export let store:StorageProps = JSON.parse(localStorage.getItem('TASKS_STORE') as string) || defaultStorage 
 
-export let tasks:Task[] = tasksStore 
+//export let tasks:Task[] = store.tasks 
+//export let dates:string[] = store.dates
 export let editId:string = '';
-export let dates:string[] = datesStore
-console.log(dates);
 
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 const title = taskForm['title'] as unknown as HTMLInputElement
@@ -57,13 +56,17 @@ export function setEditId(id:string):void{
     editId=id
 }
 
-export function setTasks(updateTasks:Task[]):void{
+export function setStore(value:StorageProps){
+    store=value
+}
+
+/*export function setTasks(updateTasks:Task[]):void{
     tasks=updateTasks
 }
 
 export function setDates(updateDates:string[]):void{
     dates=updateDates
-}
+}*/
 
 title.addEventListener('input', () => {
     if(title.value === '') {

@@ -1,5 +1,5 @@
 import renderTasksList from './renderTasksList'
-import {taskForm, editId, tasks, setEditId} from '../main'
+import {taskForm, editId, setEditId, store} from '../main'
 import { Task } from '../types'
 
 const editTask = (id:string) => {
@@ -9,7 +9,7 @@ const editTask = (id:string) => {
 
     if(editId === '' || editId !== id){
         titleForm.focus()
-        const {title, description} = tasks.find((task:Task) => task.id === id) as {title:string,description:string}
+        const {title, description} = store.tasks.find((task:Task) => task.id === id) as {title:string,description:string}
 
         buttonSave.classList.replace('btn-outline-primary','btn-outline-success')
         setEditId(id)

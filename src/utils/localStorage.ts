@@ -1,7 +1,8 @@
-import { StorageProps, Task } from "../types";
+import { setStore } from "../main";
+import { StorageProps } from "../types";
 
-export default function (key:string, value:Task[], callback:(value:StorageProps)=>void){
+export default function (key:string, value:StorageProps){
     localStorage.setItem(key,JSON.stringify(value))
     const store = JSON.parse(localStorage.getItem(key) as string)
-    callback(store)
+    setStore(store)
 }

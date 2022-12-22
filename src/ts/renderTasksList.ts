@@ -1,4 +1,4 @@
-import {editId, tasks} from '../main'
+import {editId, store} from '../main'
 import deleteTask from './deleteTask'
 import editTask from './editTask'
 
@@ -6,7 +6,7 @@ function renderTasksList() {
     const tasksList = <HTMLDivElement>document.getElementById('tasks-list')
     tasksList.innerHTML=''
 
-    tasks.map(({id,description,title,time,dayMonthYear}) => {
+    store.tasks.map(({id,description,title,time,dayMonthYear}) => {
         const cardContainer = document.createElement('div') 
         const card = document.createElement('div')
         const cardBody = document.createElement('div')
