@@ -3,6 +3,7 @@ import renderTasksList from './ts/renderTasksList'
 import saveTask from './ts/saveTask'
 import { StorageProps } from './types'
 import defaultStorage from './data/defaultStorage.json'
+import { renderDate } from './ts/renderDate'
 
 export let store:StorageProps = JSON.parse(localStorage.getItem('TASKS_STORE') as string) || defaultStorage 
 
@@ -39,7 +40,7 @@ taskForm.addEventListener('submit',saveTask)
     }
 
 taskForm.reset()
-renderTasksList()
+//renderTasksList()
 
 //errores x
 //modular x
@@ -84,3 +85,5 @@ description.addEventListener('input', () => {
     }
 })
 
+renderDate()
+console.log(store);

@@ -1,12 +1,13 @@
-import {editId, store} from '../main'
+import {editId} from '../main'
+import { Task } from '../types'
 import deleteTask from './deleteTask'
 import editTask from './editTask'
 
-function renderTasksList() {
-    const tasksList = <HTMLDivElement>document.getElementById('tasks-list')
-    tasksList.innerHTML=''
+function renderTasksList(tasks:Task[],taskList:HTMLElement) {
+    //const taskList = <HTMLDivElement>document.getElementById(`${dateId}-list`)
+    //taskList.innerHTML=''
 
-    store.tasks.map(({id,description,title,time,dayMonthYear}) => {
+    tasks.map(({id,description,title,time}) => {
         const cardContainer = document.createElement('div') 
         const card = document.createElement('div')
         const cardBody = document.createElement('div')
@@ -55,7 +56,7 @@ function renderTasksList() {
         card.appendChild(cardBody)
         cardContainer.appendChild(card)
 
-        tasksList?.appendChild(cardContainer)
+        taskList?.appendChild(cardContainer)
     })
 }
 
