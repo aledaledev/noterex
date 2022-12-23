@@ -1,43 +1,19 @@
 import './assets/styles/style.css'
-import renderTasksList from './ts/renderTasksList'
 import saveTask from './ts/saveTask'
 import { StorageProps } from './types'
 import defaultStorage from './data/defaultStorage.json'
 import { renderDate } from './ts/renderDate'
 
 export let store:StorageProps = JSON.parse(localStorage.getItem('TASKS_STORE') as string) || defaultStorage 
-
-//export let tasks:Task[] = store.tasks 
-//export let dates:string[] = store.dates
 export let editId:string = '';
 
 export const taskForm = <HTMLFormElement>document.getElementById('task-form')
 const title = taskForm['title'] as unknown as HTMLInputElement
 const description = taskForm["description"] as HTMLTextAreaElement
-//const dateTime = taskForm['datetime']
 
 taskForm.addEventListener('submit',saveTask)
 
-    /*const taskDate = new Date(dateTime.value);
-    const dayMothYear = getDayMonthYear(taskDate)
-    const time = getTime(taskDate)
-
-    if(!dates.includes(dayMothYear)){
-        dates = [...dates, dayMothYear]
-    }
-
-    console.log(dates);
-    
-    console.log(time);  //only hh:mm*/
-
-    //console.log((+time.split(':')[0])>11?time+' PM':time+' AM');    //AM or PM
-    
     //console.log(time>"20:15");  //sort
-
-    {
-        tasks:[{1:1},{1:1},{1:2},{1:2},{1:3}];
-        dates:['1','2','3'];
-    }
 
 taskForm.reset()
 //renderTasksList()
@@ -48,10 +24,11 @@ taskForm.reset()
 //tipado x 
 //localstorage x
 //mini modal x
-//hacer algo con date()
-//ahora se vera implicado el localstorage porque debemos guardar los dates y los task
-//se deben ordenar por date y dentro por hora: de menor a mayor
-//generar distintos wrappers segun dates en el array
+//hacer algo con date() x
+//ahora se vera implicado el localstorage porque debemos guardar los dates y los task x
+//generar distintos wrappers segun dates en el array x
+//se deben ordenar por date y dentro por hora: de menor a mayor 
+//delete y edit fixear x
 
 export function setEditId(id:string):void{
     editId=id
@@ -60,14 +37,6 @@ export function setEditId(id:string):void{
 export function setStore(value:StorageProps){
     store=value
 }
-
-/*export function setTasks(updateTasks:Task[]):void{
-    tasks=updateTasks
-}
-
-export function setDates(updateDates:string[]):void{
-    dates=updateDates
-}*/
 
 title.addEventListener('input', () => {
     if(title.value === '') {
@@ -86,4 +55,3 @@ description.addEventListener('input', () => {
 })
 
 renderDate()
-console.log(store);

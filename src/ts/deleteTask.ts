@@ -1,7 +1,7 @@
-import renderTasksList from './renderTasksList'
 import {editId, store} from '../main'
 import {createToast, customToast} from './createToast'
 import localStorage from '../utils/localStorage'
+import { renderDate } from './renderDate'
 
 const deleteTask = (id:string) => {
 
@@ -19,7 +19,7 @@ const deleteTask = (id:string) => {
         }
 
         localStorage('TASKS_STORE',{dates:updateDates,tasks:result})
-        renderTasksList()
+        renderDate()
         createToast(customToast[2])
     }
 

@@ -1,11 +1,11 @@
-import renderTasksList from './renderTasksList'
 import {taskForm, editId, setEditId, store} from '../main'
 import { Task } from '../types'
+import { renderDate } from './renderDate'
 
 const editTask = (id:string) => {
     const titleForm = taskForm['title'] as unknown as HTMLInputElement
     const descriptionForm = taskForm["description"] as HTMLTextAreaElement
-    const buttonSave = taskForm[2] as HTMLButtonElement
+    const buttonSave = taskForm[3] as HTMLButtonElement
 
     if(editId === '' || editId !== id){
         titleForm.focus()
@@ -28,7 +28,7 @@ const editTask = (id:string) => {
         setEditId('')
         taskForm.reset()
     }
-    renderTasksList()
+    renderDate()
 }
 
 export default editTask

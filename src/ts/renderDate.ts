@@ -4,6 +4,7 @@ import renderTasksList from "./renderTasksList"
 export function renderDate(){
 
     const dateContainer = <HTMLDivElement>document.getElementById('date-container')
+    dateContainer.innerHTML=''
 
     store.dates.map(date => {
         
@@ -29,10 +30,4 @@ export function renderDate(){
 
         renderTasksList(validTasks,taskList)
     })
-
-
-    
-
-    
-
 }

@@ -1,11 +1,11 @@
 import {taskForm, editId, setEditId, store} from '../main'
-import renderTasksList from './renderTasksList'
 import {v4 as uuid} from 'uuid'
 import createToast, { customToast } from './createToast'
 import { StorageProps, Task } from '../types'
 import localStorage from '../utils/localStorage'
 import { getDayMonthYear } from '../utils/getDayMonthYear'
 import { getTime } from '../utils/getTime'
+import { renderDate } from './renderDate'
 
 const handleError = (title : HTMLInputElement,description:HTMLTextAreaElement) => {
     title.classList.remove('is-invalid')
@@ -65,7 +65,7 @@ const saveTask = (e:SubmitEvent) => {
         buttonSave.classList.replace('btn-outline-success','btn-outline-primary')
         createToast(customToast[1])
     }
-    renderTasksList()
+    renderDate()
     taskForm.reset()
 }
 
