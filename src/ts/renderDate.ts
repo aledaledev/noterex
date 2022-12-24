@@ -1,4 +1,5 @@
 import { store } from "../main"
+import parseDate from "../utils/parseDate"
 import renderTasksList from "./renderTasksList"
 
 export function renderDate(){
@@ -14,7 +15,7 @@ export function renderDate(){
 
         const dateId = date.split(' ').join('-') + '-list'
 
-        dateText.textContent = date
+        dateText.textContent = parseDate(date)
         taskList.id = dateId
 
         dateBlock.className="col-11 m-auto my-5 bg-opacity-25 bg-primary p-3"
