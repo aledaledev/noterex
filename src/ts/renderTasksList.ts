@@ -4,7 +4,6 @@ import deleteTask from './deleteTask'
 import editTask from './editTask'
 
 function renderTasksList(tasks:Task[],taskList:HTMLElement) {
-    //const taskList = <HTMLDivElement>document.getElementById(`${dateId}-list`)
 
     tasks.map(({id,description,title,time}) => {
         const cardContainer = document.createElement('div') 

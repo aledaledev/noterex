@@ -16,19 +16,7 @@ taskForm.addEventListener('submit',saveTask)
 taskForm.reset()
 renderDate()
 
-//errores x
-//modular x
-//styles (responsive) x
-//tipado x 
-//localstorage x
-//mini modal x
-//hacer algo con date() x
-//ahora se vera implicado el localstorage porque debemos guardar los dates y los task x
-//generar distintos wrappers segun dates en el array x
-//delete y edit fixear x
-//se deben ordenar por date y dentro por hora: de menor a mayor 
-
-export function setEditId(id:string):void{
+export function setEditId({ id }: { id: string }):void{
     editId=id
 }
 
