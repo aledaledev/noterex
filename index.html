@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>TaskTS</title>
+    <script type="module" crossorigin src="/assets/index.1e9f7d1f.js"></script>
+    <link rel="stylesheet" href="/assets/index.e8f0e762.css">
+  </head>
+  <body>
+
+    <div class="card col-10 col-sm-8 col-md-6 col-xl-4 m-auto my-4">
+    <div class="card-body d-flex flex-column">
+      <h3 class="card-title text-center mb-4 mt-2">Create tasks</h3>  
+    <form id="task-form" class="d-flex flex-column align-items-center form-group gap-4">
+      <div class="col-10">
+        <input name="title" value="" class="form-control" type="text" placeholder="title">
+        <div class="invalid-feedback">No empty fields</div>
+      </div>
+      <div class="col-10">
+        <textarea class="form-control" value="" style="resize: none; height: 10rem;" name="description" placeholder="description"></textarea>
+        <div class="invalid-feedback">No empty fields</div>
+      </div>
+      <div class="col-10 d-flex justify-content-around">
+        <span class="align-self-center">By when? </span>
+        <input class="border-0 p-1 text-black-50 fw-bold" type="datetime-local" name="datetime"/>
+      </div>
+      <button type="submit" class="btn btn-outline-primary align-self-center">Save</button>
+    </form>
+    </div>
+    </div>
+
+    <div id="date-container">
+    </div>
+
+    
+  </body>
+</html>
